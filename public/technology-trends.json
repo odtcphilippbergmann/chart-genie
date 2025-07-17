@@ -1,0 +1,177 @@
+{
+    "title": "Technology Adoption Trends",
+    "description": "Global adoption rates of emerging technologies by year",
+    "categories": [
+        "AI/ML",
+        "Cloud Computing",
+        "IoT",
+        "Blockchain",
+        "AR/VR"
+    ],
+    "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+    ],
+    "adoption_rates": {
+        "AI/ML": [
+            15,
+            22,
+            35,
+            48,
+            62,
+            75
+        ],
+        "Cloud Computing": [
+            45,
+            58,
+            68,
+            76,
+            82,
+            87
+        ],
+        "IoT": [
+            28,
+            34,
+            42,
+            51,
+            59,
+            67
+        ],
+        "Blockchain": [
+            8,
+            12,
+            18,
+            25,
+            31,
+            38
+        ],
+        "AR/VR": [
+            12,
+            16,
+            23,
+            32,
+            41,
+            52
+        ]
+    },
+    "market_size_billions": {
+        "AI/ML": [
+            39.9,
+            51.8,
+            93.5,
+            136.6,
+            207.9,
+            298.2
+        ],
+        "Cloud Computing": [
+            233.4,
+            257.5,
+            312.5,
+            383.0,
+            445.3,
+            511.2
+        ],
+        "IoT": [
+            212.1,
+            248.0,
+            300.2,
+            478.4,
+            594.2,
+            704.8
+        ],
+        "Blockchain": [
+            3.0,
+            4.9,
+            6.6,
+            11.1,
+            17.9,
+            23.3
+        ],
+        "AR/VR": [
+            18.8,
+            31.9,
+            31.1,
+            28.1,
+            46.8,
+            62.1
+        ]
+    },
+    "regions": {
+        "North America": {
+            "AI/ML": 28,
+            "Cloud Computing": 42,
+            "IoT": 35,
+            "Blockchain": 18,
+            "AR/VR": 25
+        },
+        "Europe": {
+            "AI/ML": 24,
+            "Cloud Computing": 38,
+            "IoT": 32,
+            "Blockchain": 15,
+            "AR/VR": 22
+        },
+        "Asia Pacific": {
+            "AI/ML": 31,
+            "Cloud Computing": 35,
+            "IoT": 42,
+            "Blockchain": 22,
+            "AR/VR": 28
+        },
+        "Latin America": {
+            "AI/ML": 12,
+            "Cloud Computing": 18,
+            "IoT": 15,
+            "Blockchain": 8,
+            "AR/VR": 11
+        },
+        "Middle East & Africa": {
+            "AI/ML": 8,
+            "Cloud Computing": 14,
+            "IoT": 12,
+            "Blockchain": 6,
+            "AR/VR": 9
+        }
+    },
+    "investment_funding": [
+        {
+            "technology": "AI/ML",
+            "q1_2024": 12.5,
+            "q2_2024": 15.3,
+            "q3_2024": 18.7,
+            "q4_2024": 22.1
+        },
+        {
+            "technology": "Cloud Computing",
+            "q1_2024": 8.9,
+            "q2_2024": 9.4,
+            "q3_2024": 10.2,
+            "q4_2024": 11.8
+        },
+        {
+            "technology": "IoT",
+            "q1_2024": 6.2,
+            "q2_2024": 7.1,
+            "q3_2024": 8.5,
+            "q4_2024": 9.9
+        },
+        {
+            "technology": "Blockchain",
+            "q1_2024": 2.8,
+            "q2_2024": 3.2,
+            "q3_2024": 4.1,
+            "q4_2024": 5.3
+        },
+        {
+            "technology": "AR/VR",
+            "q1_2024": 4.1,
+            "q2_2024": 5.0,
+            "q3_2024": 6.2,
+            "q4_2024": 7.8
+        }
+    ]
+}

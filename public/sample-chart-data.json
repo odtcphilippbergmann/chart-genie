@@ -1,0 +1,155 @@
+{
+    "title": "E-commerce Sales Performance",
+    "description": "Monthly sales data across different product categories and regions",
+    "data": [
+        {
+            "month": "January",
+            "electronics": 45000,
+            "clothing": 32000,
+            "books": 18000,
+            "home_garden": 25000,
+            "sports": 28000,
+            "region": "North America",
+            "total_orders": 1250,
+            "avg_order_value": 118.4
+        },
+        {
+            "month": "February",
+            "electronics": 52000,
+            "clothing": 38000,
+            "books": 22000,
+            "home_garden": 29000,
+            "sports": 31000,
+            "region": "North America",
+            "total_orders": 1420,
+            "avg_order_value": 120.8
+        },
+        {
+            "month": "March",
+            "electronics": 58000,
+            "clothing": 42000,
+            "books": 24000,
+            "home_garden": 33000,
+            "sports": 35000,
+            "region": "North America",
+            "total_orders": 1580,
+            "avg_order_value": 121.5
+        },
+        {
+            "month": "April",
+            "electronics": 62000,
+            "clothing": 45000,
+            "books": 26000,
+            "home_garden": 38000,
+            "sports": 39000,
+            "region": "North America",
+            "total_orders": 1720,
+            "avg_order_value": 122.1
+        },
+        {
+            "month": "May",
+            "electronics": 68000,
+            "clothing": 48000,
+            "books": 28000,
+            "home_garden": 42000,
+            "sports": 43000,
+            "region": "North America",
+            "total_orders": 1890,
+            "avg_order_value": 123.3
+        },
+        {
+            "month": "June",
+            "electronics": 72000,
+            "clothing": 52000,
+            "books": 30000,
+            "home_garden": 45000,
+            "sports": 47000,
+            "region": "North America",
+            "total_orders": 2010,
+            "avg_order_value": 124.8
+        },
+        {
+            "month": "July",
+            "electronics": 75000,
+            "clothing": 55000,
+            "books": 32000,
+            "home_garden": 48000,
+            "sports": 50000,
+            "region": "North America",
+            "total_orders": 2150,
+            "avg_order_value": 125.6
+        },
+        {
+            "month": "August",
+            "electronics": 78000,
+            "clothing": 58000,
+            "books": 34000,
+            "home_garden": 51000,
+            "sports": 53000,
+            "region": "North America",
+            "total_orders": 2280,
+            "avg_order_value": 126.4
+        },
+        {
+            "month": "September",
+            "electronics": 82000,
+            "clothing": 61000,
+            "books": 36000,
+            "home_garden": 54000,
+            "sports": 56000,
+            "region": "North America",
+            "total_orders": 2410,
+            "avg_order_value": 127.2
+        },
+        {
+            "month": "October",
+            "electronics": 88000,
+            "clothing": 65000,
+            "books": 38000,
+            "home_garden": 58000,
+            "sports": 60000,
+            "region": "North America",
+            "total_orders": 2590,
+            "avg_order_value": 128.9
+        },
+        {
+            "month": "November",
+            "electronics": 95000,
+            "clothing": 72000,
+            "books": 42000,
+            "home_garden": 64000,
+            "sports": 66000,
+            "region": "North America",
+            "total_orders": 2850,
+            "avg_order_value": 131.2
+        },
+        {
+            "month": "December",
+            "electronics": 105000,
+            "clothing": 80000,
+            "books": 48000,
+            "home_garden": 72000,
+            "sports": 74000,
+            "region": "North America",
+            "total_orders": 3200,
+            "avg_order_value": 134.7
+        }
+    ],
+    "metadata": {
+        "created_date": "2024-12-01",
+        "last_updated": "2024-12-31",
+        "currency": "USD",
+        "data_source": "E-commerce Analytics Platform",
+        "columns": {
+            "month": "string",
+            "electronics": "number",
+            "clothing": "number",
+            "books": "number",
+            "home_garden": "number",
+            "sports": "number",
+            "region": "string",
+            "total_orders": "number",
+            "avg_order_value": "number"
+        }
+    }
+}
