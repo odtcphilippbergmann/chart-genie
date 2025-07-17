@@ -1,93 +1,228 @@
-# chart-genie
+# ChartGenie: AI-Powered Interactive Chart Builder
 
+Transform your data into beautiful, interactive charts with AI assistance. From data upload to presentation-ready visuals in minutes.
 
+## Current Status
 
-## Getting started
+- **Core Features Complete**: Upload, parse, and visualize CSV/JSON/Excel files
+- **Chart Engine**: Full ECharts integration with 7+ chart types
+- **Export System**: PNG, SVG, React component, and HTML exports
+- **Accessibility**: WCAG 2.1 AA compliant with keyboard navigation
+- **MCP Integration**: Ready for AI-enhanced suggestions via MCP ECharts server
+- **Fallback Logic**: Works perfectly without MCP - robust local chart generation
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+**Note**: MCP ECharts integration is **optional** and enhances the experience when available. The app provides intelligent local chart suggestions by default.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## Features
 
-## Add your files
+- **Smart Data Upload**: Support for CSV, JSON, and Excel files with intelligent parsing
+- **AI Chart Suggestions**: Intelligent chart recommendations using local algorithms + optional MCP enhancement
+- **Interactive Preview**: Real-time chart generation with Apache ECharts
+- **15+ Chart Types**: From simple bar charts to advanced radar, parallel coordinates, and treemaps
+- **Multiple Export Options**:
+  - PNG/SVG images for presentations
+  - React component code for developers
+  - Self-contained interactive HTML files
+- **Beautiful UI**: Modern, responsive design with accessibility focus
+- **Fast Processing**: Instant chart generation and preview
+- **Robust Fallbacks**: Works seamlessly with or without MCP integration
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+**For details on chart types and recommendation logic, see [Chart Suggestion System Documentation](./docs/CHART_SUGGESTION_SYSTEM.md)**
 
-```
-cd existing_repo
-git remote add origin https://git.odt.net/oddity-code/hackathon/chart-genie.git
-git branch -M master
-git push -uf origin master
-```
+## Tech Stack
 
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://git.odt.net/oddity-code/hackathon/chart-genie/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+- **Frontend**: React 19 + TypeScript + Vite
+- **Styling**: Tailwind CSS v4
+- **Charts**: Apache ECharts + echarts-for-react
+- **Icons**: Lucide React
+- **Data Processing**: PapaParse (CSV), native JSON parsing
+- **File Exports**: html2canvas, file-saver
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+1. **Clone and install dependencies**:
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+   ```bash
+   npm install
+   ```
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+2. **Start the development server**:
+
+   ```bash
+   npm run dev
+   ```
+
+3. **Open your browser** and visit `http://localhost:5173`
+
+## MCP (Model Context Protocol) Integration
+
+ChartGenie includes a **custom MCP client integration** that connects to external MCP servers for enhanced AI capabilities. The app works perfectly without MCP (using intelligent local algorithms), but MCP integration provides advanced AI-powered features.
+
+### Architecture
+
+**What ChartGenie Includes:**
+
+- **Custom MCP Client** (`src/utils/mcpEChartsService.ts`) - Built-in client that connects to MCP servers
+- **Hybrid Suggestion Engine** - Local algorithms + optional MCP enhancement
+- **Automatic Fallback** - Seamlessly works with or without MCP servers
+- **Dual-Mode Operation** - Always functional, enhanced when MCP is available
+
+**What You Need to Provide:**
+
+- **MCP Server** - External server for AI processing (Claude Desktop, standalone, or custom)
+
+### Quick Setup
+
+1. **Install an MCP ECharts server** (choose one option):
+
+   **Option A: Claude Desktop (Recommended)**
+
+   ```json
+   {
+     "mcpServers": {
+       "mcp-echarts": {
+         "command": "npx",
+         "args": ["-y", "mcp-echarts"]
+       }
+     }
+   }
+   ```
+
+   **Option B: Standalone Server**
+
+   ```bash
+   npx -y mcp-echarts
+   ```
+
+2. **ChartGenie automatically connects** - No additional configuration needed!
+
+3. **Benefits of MCP Integration**:
+   - Advanced AI chart recommendations with higher confidence scores
+   - Context-aware chart type suggestions based on data analysis
+   - Optimized ECharts configurations with accessibility features
+   - Intelligent data insights and pattern detection
+
+**For detailed MCP setup and configuration, see [MCP Installation Guide](./docs/MCP_INSTALLATION_GUIDE.md)**
+
+## Usage Guide
+
+### Step 1: Upload Data
+
+- Drag and drop your CSV, JSON, or Excel file
+- Or click "Choose File" to browse
+- Supported formats: `.csv`, `.json`, `.xlsx`, `.xls`
+
+### Step 2: Review Data
+
+- View data summary and column types
+- Check AI-generated insights
+- Examine data preview table
+
+### Step 3: Choose Chart Type
+
+- Browse intelligent chart suggestions (enhanced by AI when MCP is available)
+- View confidence scores and detailed reasoning
+- See complexity indicators (Simple, Intermediate, Advanced)
+- Select the best chart for your data and use case
+
+**Learn about the suggestion algorithm in [Chart Suggestion System Documentation](./docs/CHART_SUGGESTION_SYSTEM.md)**
+
+### Step 4: Export & Share
+
+- **PNG/SVG**: Perfect for presentations and documents
+- **React Component**: Copy-paste into your web applications
+- **Interactive HTML**: Self-contained file for live presentations
+
+## Example Use Cases
+
+### Sales Dashboard
+
+Upload monthly sales data → Get bar chart suggestions → Export interactive HTML for team presentations
+
+### Time Series Analysis
+
+Upload financial data → Get line chart recommendations → Export React component for web app
+
+### Market Research
+
+Upload survey data → Get pie chart suggestions → Export PNG for reports
+
+## Project Structure
+
+```
+src/
+├── components/           # React components
+│   ├── FileUpload.tsx   # File upload interface
+│   ├── DataPreview.tsx  # Data summary and insights
+│   ├── ChartSuggestions.tsx  # AI chart recommendations
+│   └── ChartPreview.tsx # Chart display and exports
+├── utils/               # Utility functions
+│   ├── dataParser.ts    # Data processing and insights
+│   ├── chartSuggestions.ts  # Chart recommendation engine
+│   └── exportUtils.ts   # Export functionality
+└── App.tsx              # Main application
+```
+
+## Customization
+
+### Adding New Chart Types
+
+1. Extend the `ChartSuggestion` type in `chartSuggestions.ts`
+2. Add chart creation logic in `createEChartsOption`
+3. Update the icon mapping in `ChartSuggestions.tsx`
+
+### Custom Themes
+
+Modify `tailwind.config.js` to customize colors and styling:
+
+```javascript
+theme: {
+  extend: {
+    colors: {
+      primary: {
+        500: '#your-color',
+        // ...
+      }
+    }
+  }
+}
+```
+
+## Deployment
+
+1. **Build for production**:
+
+   ```bash
+   npm run build
+   ```
+
+2. **Preview the build**:
+
+   ```bash
+   npm run preview
+   ```
+
+3. **Deploy** to your favorite hosting platform (Vercel, Netlify, etc.)
 
 ## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
 
 ## License
-For open source projects, say how it is licensed.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [Apache ECharts](https://echarts.apache.org/) for the amazing charting library
+- [Model Context Protocol](https://mcp.so/) for AI integration capabilities
+- [Tailwind CSS](https://tailwindcss.com/) for the styling framework
+- [Lucide](https://lucide.dev/) for beautiful icons
+
+---
+
+**Made with care for data visualization enthusiasts**

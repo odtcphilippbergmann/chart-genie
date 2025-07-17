@@ -1,0 +1,76 @@
+{
+    "products": [
+        {
+            "name": "MacBook Pro",
+            "category": "Laptops",
+            "price": 1999,
+            "units_sold": 1250,
+            "revenue": 2498750,
+            "customer_rating": 4.8,
+            "launch_year": 2021
+        },
+        {
+            "name": "iPhone 15",
+            "category": "Smartphones",
+            "price": 999,
+            "units_sold": 3200,
+            "revenue": 3196800,
+            "customer_rating": 4.7,
+            "launch_year": 2023
+        },
+        {
+            "name": "iPad Air",
+            "category": "Tablets",
+            "price": 599,
+            "units_sold": 890,
+            "revenue": 533110,
+            "customer_rating": 4.6,
+            "launch_year": 2022
+        },
+        {
+            "name": "Apple Watch",
+            "category": "Wearables",
+            "price": 399,
+            "units_sold": 2100,
+            "revenue": 837900,
+            "customer_rating": 4.5,
+            "launch_year": 2023
+        },
+        {
+            "name": "AirPods Pro",
+            "category": "Audio",
+            "price": 249,
+            "units_sold": 1800,
+            "revenue": 448200,
+            "customer_rating": 4.4,
+            "launch_year": 2022
+        },
+        {
+            "name": "iMac",
+            "category": "Desktops",
+            "price": 1299,
+            "units_sold": 450,
+            "revenue": 584550,
+            "customer_rating": 4.9,
+            "launch_year": 2021
+        },
+        {
+            "name": "Mac mini",
+            "category": "Desktops",
+            "price": 699,
+            "units_sold": 320,
+            "revenue": 223680,
+            "customer_rating": 4.3,
+            "launch_year": 2023
+        },
+        {
+            "name": "Studio Display",
+            "category": "Monitors",
+            "price": 1599,
+            "units_sold": 180,
+            "revenue": 287820,
+            "customer_rating": 4.2,
+            "launch_year": 2022
+        }
+    ]
+}
