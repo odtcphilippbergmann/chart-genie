@@ -180,7 +180,7 @@ export function generateInteractiveHTML(
         </div>
         <div id="chart"></div>
         <div class="footer">
-            <p>Generated with ChartGenie • Interactive chart powered by Apache ECharts</p>
+            <p>Generated with ChartGenie</p>
         </div>
     </div>
 

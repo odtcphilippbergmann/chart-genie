@@ -5,11 +5,17 @@ import type { ParsedData } from "../utils/dataParser";
 interface DataPreviewProps {
   data: ParsedData;
   insights: string[];
+  aiAnalysis?: any;
 }
 
-const DataPreview: React.FC<DataPreviewProps> = ({ data, insights }) => {
+const DataPreview: React.FC<DataPreviewProps> = ({ data, insights, aiAnalysis }) => {
   const maxRowsToShow = 10;
   const displayRows = data.rows.slice(0, maxRowsToShow);
+
+  // Example usage of aiAnalysis (available for future use)
+  // const aiInsights = aiAnalysis?.insights || [];
+  // const aiQuality = aiAnalysis?.summary?.dataQuality || "";
+  console.log("DataPreview aiAnalysis:", aiAnalysis);
 
   return (
     <div className="space-y-8 animate-fade-in">

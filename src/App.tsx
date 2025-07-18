@@ -1,9 +1,11 @@
 import { useState, useCallback } from "react";
 import { Sparkles, Database, BarChart3 } from "lucide-react";
+import { animate, stagger } from "motion";
 import FileUpload from "./components/FileUpload";
 import DataPreview from "./components/DataPreview";
 import ChartSuggestions from "./components/ChartSuggestions";
 import ChartPreview from "./components/ChartPreview";
+import DataAnalysis from "./components/DataAnalysis";
 import {
   parseCSV,
   parseJSON,
@@ -29,8 +31,11 @@ function App() {
   const [selectedSuggestion, setSelectedSuggestion] =
     useState<ChartSuggestion | null>(null);
   const [chartOption, setChartOption] = useState<EChartsOption | null>(null);
+  const [dataContext, setDataContext] = useState<string>("");
+  const [aiAnalysis, setAiAnalysis] = useState<any>(null);
+  const isOpenAIConfigured = !!import.meta.env.VITE_OPENAI_API_KEY;
 
-  const handleFileSelect = useCallback(async (file: File) => {
+  const handleFileSelect = useCallback(async (file: File, context?: string) => {
     setLoading(true);
     try {
       let parsedData: ParsedData;
@@ -58,9 +63,29 @@ function App() {
       const chartSuggestions = await generateChartSuggestions(parsedData);
 
       setData(parsedData);
+      setDataContext(context || "");
       setInsights(dataInsights);
       setSuggestions(chartSuggestions);
       setCurrentStep("preview");
+
+      // Animate transition to preview step
+      setTimeout(() => {
+        animate(
+          ".step-indicator",
+          { scale: [0.95, 1] },
+          { duration: 0.3 }
+        );
+        animate(
+          ".preview-container",
+          { opacity: [0, 1], y: [20, 0] },
+          { duration: 0.6 }
+        );
+        animate(
+          ".preview-item",
+          { opacity: [0, 1], y: [30, 0] },
+          { duration: 0.5, delay: stagger(0.1) }
+        );
+      }, 100);
 
       // Auto-select the first suggestion
       if (chartSuggestions.length > 0) {
@@ -89,22 +114,48 @@ function App() {
       );
       setChartOption(option);
       setCurrentStep("chart");
+
+      // Animate transition to chart step
+      setTimeout(() => {
+        animate(
+          ".chart-container",
+          { opacity: [0, 1], x: [30, 0] },
+          { duration: 0.6 }
+        );
+      }, 100);
     },
     [data]
   );
 
   const handleReset = () => {
-    setCurrentStep("upload");
-    setData(null);
-    setInsights([]);
-    setSuggestions([]);
-    setSelectedSuggestion(null);
-    setChartOption(null);
+    // Animate fade out before reset
+    animate(
+      ".main-content",
+      { opacity: [1, 0], y: [0, -20] },
+      { duration: 0.4 }
+    ).then(() => {
+      setCurrentStep("upload");
+      setData(null);
+      setInsights([]);
+      setSuggestions([]);
+      setSelectedSuggestion(null);
+      setChartOption(null);
+      setAiAnalysis(null);
+      
+      // Animate fade in after reset
+      setTimeout(() => {
+        animate(
+          ".upload-container",
+          { opacity: [0, 1], y: [20, 0] },
+          { duration: 0.6 }
+        );
+      }, 100);
+    });
   };
 
   const renderStepIndicator = () => (
     <nav
-      className="flex items-center justify-center space-x-8 mb-16 animate-slide-up"
+      className="step-indicator flex items-center justify-center space-x-8 mb-16 animate-slide-up"
       aria-label="Progress indicator"
       role="navigation"
     >
@@ -214,11 +265,11 @@ function App() {
         {/* Main Content */}
         <main
           id="main-content"
-          className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+          className="main-content space-y-8"
         >
           {/* Upload Step - Full Width */}
           {currentStep === "upload" && (
-            <div className="lg:col-span-3 flex justify-center">
+            <div className="upload-container flex justify-center">
               <div className="w-full max-w-2xl">
                 <FileUpload onFileSelect={handleFileSelect} loading={loading} />
               </div>
@@ -227,40 +278,50 @@ function App() {
 
           {/* Data Processing Steps */}
           {currentStep !== "upload" && (
-            <>
-              {/* Left Column - Data Preview */}
-              <div className="lg:col-span-1 space-y-6">
-                {data && <DataPreview data={data} insights={insights} />}
-              </div>
-
-              {/* Middle Column - Chart Suggestions */}
-              <div className="lg:col-span-1">
-                <ChartSuggestions
-                  suggestions={suggestions}
-                  selectedSuggestion={selectedSuggestion}
-                  onSelectSuggestion={handleSuggestionSelect}
-                />
-              </div>
-
-              {/* Right Column - Chart Preview */}
-              {currentStep === "chart" && (
-                <div className="lg:col-span-1">
-                  <ChartPreview
-                    chartOption={chartOption}
-                    title={selectedSuggestion?.title || "Generated Chart"}
+            <div className="preview-container">
+              {/* AI Analysis - Full Width at Top */}
+              {data && isOpenAIConfigured && (
+                <div className="preview-item w-full mb-8">
+                  <DataAnalysis 
+                    data={data} 
+                    context={dataContext} 
+                    onAnalysisComplete={setAiAnalysis}
                   />
                 </div>
               )}
-            </>
+
+              {/* Three Column Layout */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                {/* Left Column - Data Preview */}
+                <div className="preview-item lg:col-span-1">
+                  {data && <DataPreview data={data} insights={insights} aiAnalysis={aiAnalysis} />}
+                </div>
+
+                {/* Middle Column - Chart Suggestions */}
+                <div className="preview-item lg:col-span-1">
+                  <ChartSuggestions
+                    suggestions={suggestions}
+                    selectedSuggestion={selectedSuggestion}
+                    onSelectSuggestion={handleSuggestionSelect}
+                    aiAnalysis={aiAnalysis}
+                  />
+                </div>
+
+                {/* Right Column - Chart Preview */}
+                {currentStep === "chart" && (
+                  <div className="chart-container lg:col-span-1">
+                    <ChartPreview
+                      chartOption={chartOption}
+                      title={selectedSuggestion?.title || "Generated Chart"}
+                      aiAnalysis={aiAnalysis}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
           )}
         </main>
 
-        {/* Footer */}
-        <footer className="text-center mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
-          <p className="text-gray-500 dark:text-gray-400">
-            Powered by Apache ECharts • Built with React & TypeScript
-          </p>
-        </footer>
       </div>
     </div>
   );

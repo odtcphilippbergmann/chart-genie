@@ -8,6 +8,7 @@ import { chartExports } from "../utils/exportUtils";
 interface ChartPreviewProps {
   chartOption: EChartsOption | null;
   title?: string;
+  aiAnalysis?: any;
 }
 
 interface ErrorBoundaryState {
@@ -86,7 +87,12 @@ interface ChartPreviewProps {
 const ChartPreview: React.FC<ChartPreviewProps> = ({
   chartOption,
   title = "Generated Chart",
+  aiAnalysis,
 }) => {
+  // Example usage of aiAnalysis (available for future use)
+  // const aiColumnDescriptions = aiAnalysis?.columns || [];
+  console.log("ChartPreview aiAnalysis:", aiAnalysis);
+  
   const chartRef = useRef<ReactECharts>(null);
 
   const handleExportPNG = async () => {

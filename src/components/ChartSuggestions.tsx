@@ -26,13 +26,19 @@ interface ChartSuggestionsProps {
   suggestions: ChartSuggestion[];
   selectedSuggestion: ChartSuggestion | null;
   onSelectSuggestion: (suggestion: ChartSuggestion) => void;
+  aiAnalysis?: any;
 }
 
 const ChartSuggestions: React.FC<ChartSuggestionsProps> = ({
   suggestions,
   selectedSuggestion,
   onSelectSuggestion,
+  aiAnalysis,
 }) => {
+  // Example usage of aiAnalysis (available for future use)
+  // const aiRecommendations = aiAnalysis?.recommendations || [];
+  console.log("ChartSuggestions aiAnalysis:", aiAnalysis);
+  
   const getChartIcon = (type: string) => {
     switch (type) {
       case "bar":
