@@ -22,6 +22,10 @@ function App() {
   const [currentStep, setCurrentStep] = useState<
     "upload" | "preview" | "chart"
   >("upload");
+  const [chartLibrary, setChartLibrary] = useState<"echarts" | "nivo">(
+    "echarts"
+  );
+  const [colorPalette, setColorPalette] = useState<string>("default");
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<ParsedData | null>(null);
   const [insights, setInsights] = useState<string[]>([]);
@@ -228,6 +232,42 @@ function App() {
           {/* Data Processing Steps */}
           {currentStep !== "upload" && (
             <>
+              {/* top Row - Settings */}
+              <div className="lg:col-span-3 mb-8 space-y-4">
+                <div className="w-full lg:w-1/2 mx-auto">
+                  {/* Chart Library Dropdown */}
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Chart Library
+                  </label>
+                  <select
+                    className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    value={chartLibrary}
+                    onChange={(e) =>
+                      setChartLibrary(e.target.value as "echarts" | "nivo")
+                    }
+                  >
+                    <option value="echarts">Apache ECharts</option>
+                    <option value="nivo">Nivo (coming soon)</option>
+                  </select>
+                </div>
+
+                <div className="w-full lg:w-1/2 mx-auto">
+                  {/* Color Palette Dropdown */}
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 mt-4">
+                    Color Palette
+                  </label>
+                  <select
+                    className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    value={colorPalette}
+                    onChange={(e) => setColorPalette(e.target.value)}
+                  >
+                    <option value="default">Default</option>
+                    <option value="pastel">Pastel (coming soon)</option>
+                    <option value="vibrant">Vibrant (coming soon)</option>
+                    <option value="dark">Dark (coming soon)</option>
+                  </select>
+                </div>
+              </div>
               {/* Left Column - Data Preview */}
               <div className="lg:col-span-1 space-y-6">
                 {data && <DataPreview data={data} insights={insights} />}
